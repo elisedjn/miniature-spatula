@@ -41,8 +41,10 @@ const UserDetailsForm = () => {
         }
       />
 
-      <div className='w-full text-right'>
-        <Button btnText='Confirm' onClick={onConfirmForm} />
+      <div className='w-full flex justify-end'>
+        <div className='w-32'>
+          <Button btnText='Confirm' onClick={onConfirmForm} />
+        </div>
       </div>
     </div>
   );

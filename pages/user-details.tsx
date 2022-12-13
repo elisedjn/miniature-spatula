@@ -1,26 +1,28 @@
+import Router from 'next/router';
 import React from 'react';
-import FloattingButton from '../components/floatting-button';
+import Button from '../components/marley-button';
 import UserDetailsForm from '../components/user-details-form';
-import Form from '../components/user-details-form';
 import { useAppContext } from '../contexts/state';
 
 const UserDetails = () => {
   const { selected } = useAppContext();
+
   return (
     <div className='flex w-full justify-center items-stretch gap-10'>
-      <div className='bg-white rounded-lg border p-8 gap-8 flex-col flex w-1/3'>
+      <div className='bg-white rounded-lg border p-8 gap-8 flex-col flex w-1/3 justify-between'>
         <h3 className='text-xl'>Your selected recipes</h3>
-        <div>
+        <ul>
           {selected.map((recipe) => (
-            <div key={recipe.id}>{recipe.title}</div>
+            <li className='py-2' key={recipe.id}>
+              - {recipe.title}
+            </li>
           ))}
-        </div>
+        </ul>
+        <Button btnText='Change recipes' onClick={() => Router.push('/')} />
       </div>
       <UserDetailsForm />
     </div>
   );
 };
-
-export const getStaticProps = () => {};
 
 export default UserDetails;

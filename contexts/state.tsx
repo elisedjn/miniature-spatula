@@ -59,7 +59,8 @@ export function AppWrapper({ children }: Props) {
     } else if (!validEmail(userInfo.email)) {
       setErrors((e) => [...e, 'wrong_email']);
     } else if (selected.length !== 2) {
-      console.log('wrong amount of recipes');
+      alert('Please Select 2 recipes before to continue');
+      Router.push('/');
     } else {
       const res = await fetch('/api/submit', {
         method: 'POST',
@@ -68,8 +69,10 @@ export function AppWrapper({ children }: Props) {
       const { status } = await res.json();
       if (status === 'SUCCESS') {
         Router.push('/confirmation');
+        setSelected([]);
+        setUserInfo({ name: '', email: '' });
       } else {
-        //error message
+        alert('Something went wrong, please try again');
       }
     }
   };

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import { Recipe } from '../helpers/types';
+import { mealAttributeKeys, Recipe } from '../helpers/types';
 
 type RecipeCardProps = {
   recipe: Recipe;
@@ -12,7 +12,7 @@ const RecipeCard = ({ recipe, selected = false, onSelectRecipe }: RecipeCardProp
   return (
     <div
       className={`group relative flex flex-col overflow-hidden rounded-lg cursor-pointer bg-white ${
-        selected ? 'border-4 border-yellow-400 ' : 'border border-gray-200'
+        selected ? 'border-8 border-yellow-400 ' : 'border border-gray-200'
       }`}
       onClick={() => onSelectRecipe(recipe.id)}
     >
@@ -27,17 +27,22 @@ const RecipeCard = ({ recipe, selected = false, onSelectRecipe }: RecipeCardProp
         </div>
       </div>
 
-      <div className='flex flex-1 flex-col space-y-2 p-4'>
-        <h3 className='text-sm font-medium text-gray-900'>
-          <span aria-hidden='true' className='absolute inset-0' />
-          {recipe.title}
-        </h3>
-        <p className='text-sm text-gray-500'>{recipe.subtitle}</p>
-        <div className='flex flex-1 flex-col justify-end'>
+      <div className='flex flex-col p-4 justify-between h-full'>
+        <div>
+          <h3 className='text-sm font-medium text-gray-900'>
+            <span aria-hidden='true' className='absolute inset-0' />
+            {recipe.title}
+          </h3>
+          <p className='text-sm text-gray-500'>{recipe.subtitle}</p>
+        </div>
+        <div className='flex justify-start flex-wrap-reverse gap-3 mt-8'>
           {recipe.attributes.map((att) => (
-            <p key={att.key} className='text-sm italic text-gray-500'>
-              {att.key}
-            </p>
+            <span
+              key={att.key}
+              className='inline-flex items-center rounded-md bg-gray-100 px-2.5 py-1 text-[10px] font-medium  text-gray-600 uppercase'
+            >
+              {mealAttributeKeys[att.key]}
+            </span>
           ))}
         </div>
       </div>

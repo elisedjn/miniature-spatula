@@ -1,9 +1,7 @@
-import Image from 'next/image';
 import { useState } from 'react';
 import FloattingButton from '../components/floatting-button';
 import RecipeCard from '../components/recipe-card';
 import { Recipe } from '../helpers/types';
-import styles from '../styles/Home.module.css';
 
 type HomeProps = {
   recipes: Recipe[];
@@ -31,15 +29,8 @@ const Home = ({ recipes }: HomeProps) => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>
-        Welcome to{' '}
-        <a href='https://marleyspoon.com.au/' className='text-yellow-300'>
-          Marley Spoon
-        </a>
-      </h1>
-
-      <p className={styles.description}>
+    <div className='p-8'>
+      <p className='mb-16 text-xl text-center italic'>
         You cannot wait to cook ? Choose 2 recipes from this list !
       </p>
 
@@ -57,8 +48,8 @@ const Home = ({ recipes }: HomeProps) => {
       <FloattingButton
         text={getFloatingText()}
         disabled={selected.length < 2}
-        onBtnClick={() => console.log('clicked')}
-        btnText={'Continue'}
+        linkTo='/user-details'
+        btnText='Continue'
       />
     </div>
   );

@@ -2,6 +2,8 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Image from 'next/image';
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -11,19 +13,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name='description' content='Front end code challenge for Marley Spoon' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Component {...pageProps} />
-      <footer className='footer'>
-        <a
-          href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Powered by{' '}
-          <span>
-            <Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      <Header />
+      <main className='bg-neutral-100 min-h-full pt-16'>
+        <Component {...pageProps} />
+      </main>
+      <Footer />
     </div>
   );
 }

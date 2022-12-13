@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import FloattingButton from '../components/floatting-button';
 import RecipeCard from '../components/recipe-card';
+import { useAppContext } from '../contexts/state';
 import { Recipe } from '../helpers/types';
 
 type HomeProps = {
@@ -8,17 +9,7 @@ type HomeProps = {
 };
 
 const Home = ({ recipes }: HomeProps) => {
-  const [selected, setSelected] = useState<string[]>([]);
-
-  const onSelectRecipe = (id: string) => {
-    if (selected.includes(id)) {
-      setSelected((selec) => selec.filter((rId) => rId != id));
-    } else if (selected.length < 2) {
-      setSelected((s) => [...s, id]);
-    } else {
-      console.log('already 2 selected');
-    }
-  };
+  const { selected, onSelectRecipe } = useAppContext();
 
   const getFloatingText = () => {
     return selected.length === 0
@@ -29,7 +20,7 @@ const Home = ({ recipes }: HomeProps) => {
   };
 
   return (
-    <div className='p-8'>
+    <div>
       <p className='mb-16 text-xl text-center italic'>
         You cannot wait to cook ? Choose 2 recipes from this list !
       </p>

@@ -18,6 +18,8 @@ export type Recipe = {
   __typeName: string;
 };
 
+export type SelectedRecipe = { id: string; title: string };
+
 type mealAttribute = {
   key: keyof typeof mealAttributeKeys;
   __typename: string;
@@ -32,4 +34,9 @@ export const mealAttributeKeys = {
   meat: 'meat',
   optional_heat: 'optional heat',
   vegetarian: 'vegetarian',
+};
+
+export type UserInfo = {
+  firstName: string;
+  email: string;
 };

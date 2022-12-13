@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import FloattingButton from '../components/floatting-button';
 import RecipeCard from '../components/recipe-card';
 import { useAppContext } from '../contexts/state';
+import { getFloatingText } from '../helpers/functions';
 import { Recipe } from '../helpers/types';
 
 type HomeProps = {
@@ -10,14 +11,6 @@ type HomeProps = {
 
 const Home = ({ recipes }: HomeProps) => {
   const { selected, onSelectRecipe } = useAppContext();
-
-  const getFloatingText = () => {
-    return selected.length === 0
-      ? 'Choose 2 recipes from the list'
-      : selected.length === 1
-      ? 'One more recipe to pick up!'
-      : 'Ready for the next step? ';
-  };
 
   return (
     <div>
@@ -31,13 +24,13 @@ const Home = ({ recipes }: HomeProps) => {
             <RecipeCard
               key={recipe.id}
               recipe={recipe}
-              selected={selected.includes(recipe.id)}
+              selected={!!selected.find((r) => r.id === recipe.id)}
               onSelectRecipe={onSelectRecipe}
             />
           ))}
       </div>
       <FloattingButton
-        text={getFloatingText()}
+        text={getFloatingText(selected.length)}
         disabled={selected.length < 2}
         linkTo='/user-details'
         btnText='Continue'

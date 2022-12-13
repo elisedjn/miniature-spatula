@@ -5,7 +5,7 @@ import { mealAttributeKeys, Recipe } from '../helpers/types';
 type RecipeCardProps = {
   recipe: Recipe;
   selected?: boolean;
-  onSelectRecipe: (id: string) => void;
+  onSelectRecipe: (id: string, title: string) => void;
 };
 
 const RecipeCard = ({ recipe, selected = false, onSelectRecipe }: RecipeCardProps) => {
@@ -14,7 +14,7 @@ const RecipeCard = ({ recipe, selected = false, onSelectRecipe }: RecipeCardProp
       className={`group relative flex flex-col overflow-hidden rounded-lg cursor-pointer bg-white ${
         selected ? 'border-8 border-yellow-400 ' : 'border border-gray-200'
       }`}
-      onClick={() => onSelectRecipe(recipe.id)}
+      onClick={() => onSelectRecipe(recipe.id, recipe.title)}
     >
       <div className='aspect-w-3 aspect-h-4 group-hover:opacity-75 '>
         <div className='h-full w-full object-cover object-center sm:h-full sm:w-full flex justify-center content-center'>

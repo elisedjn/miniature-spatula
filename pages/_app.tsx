@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <link rel='icon' href='/favicon.ico' />
         </Head>
         <Header />
-        <main className='bg-neutral-100 min-h-full p-8 pt-16 '>
+        <main className='bg-neutral-100 min-h-[90vh] p-8 pt-24 '>
           <Component {...pageProps} />
         </main>
         <Footer />

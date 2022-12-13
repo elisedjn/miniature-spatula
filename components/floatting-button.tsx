@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import Button from './marley-button';
 
 type FloattingButtonProps = {
   text: string;
@@ -14,12 +15,7 @@ const FloattingButton = ({ text, btnText, disabled, linkTo }: FloattingButtonPro
       <div />
       <p className='text-lg'>{text}</p>
       {disabled ? (
-        <button
-          disabled
-          className='bg-gray-300 text-white focus:ring-gray-200 inline-flex items-center rounded-md border border-transparent px-6 py-3 text-base font-medium  shadow-sm  focus:outline-none focus:ring-2  focus:ring-offset-2 '
-        >
-          {btnText}
-        </button>
+        <Button btnText={btnText} disabled onClick={() => null} />
       ) : (
         <Link
           href={linkTo}

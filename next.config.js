@@ -12,6 +12,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://code-challenge-mid.vercel.app/api/:path*',
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

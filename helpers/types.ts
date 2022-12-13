@@ -4,7 +4,7 @@ export type Recipe = {
   title: string;
   subtitle: string;
   mealType: string;
-  Recipe: string;
+  recipeType: string;
   category: {
     displayText: string;
     __typename: string;
@@ -15,7 +15,7 @@ export type Recipe = {
   };
   attributes: mealAttribute[];
   extraFees: [];
-  __typeName: string;
+  __typename: string;
 };
 
 export type SelectedRecipe = { id: string; title: string };

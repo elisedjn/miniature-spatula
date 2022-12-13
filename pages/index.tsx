@@ -14,9 +14,9 @@ const Home = ({ recipes }: HomeProps) => {
 
   return (
     <div>
-      <p className='mb-16 text-xl text-center italic'>
+      <h4 className='mb-16 text-xl text-center italic'>
         You cannot wait to cook ? Choose 2 recipes from this list !
-      </p>
+      </h4>
 
       <div className='grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8'>
         {!!recipes.length &&

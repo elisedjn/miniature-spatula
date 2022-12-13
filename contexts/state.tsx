@@ -70,7 +70,7 @@ export function AppWrapper({ children }: Props) {
       if (status === 'SUCCESS') {
         Router.push('/confirmation');
         setSelected([]);
-        setUserInfo({ name: '', email: '' });
+        setUserInfo({ firstName: '', email: '' });
       } else {
         alert('Something went wrong, please try again');
       }

@@ -9,6 +9,7 @@ type ButtonProps = {
 const Button = ({ btnText, disabled = false, onClick }: ButtonProps) => {
   return (
     <button
+      role='button'
       disabled={disabled}
       className={`${
         disabled
